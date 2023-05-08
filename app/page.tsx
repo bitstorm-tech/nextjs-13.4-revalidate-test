@@ -1,4 +1,5 @@
 "use client";
+
 export default function Home() {
   function newPost() {
     fetch("http://localhost:3000/api/posts", {
@@ -8,9 +9,15 @@ export default function Home() {
       }),
     });
   }
+
+  function clearPosts() {
+    fetch("http://localhost:3000/api/posts", { method: "delete" });
+  }
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <button onClick={newPost}>New Post</button>
+    <main className="flex h-screen flex-col items-center">
+      <button onClick={newPost}>{">> Add Post <<"}</button>
+      <button onClick={clearPosts}>{">> Clear Posts <<"}</button>
     </main>
   );
 }

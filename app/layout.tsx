@@ -17,8 +17,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Link href="/">Home</Link>
-        <Link href="/posts">Posts</Link>
+        <div className="flex gap-6 m-10 justify-center">
+          <Link href="/">Add Post</Link>
+          <Link href="/posts">List Posts</Link>
+        </div>
         {children}
       </body>
     </html>

@@ -1,13 +1,16 @@
+export const revalidate = 0;
+
 export default async function PostsPage() {
-  const response = await fetch("http://localhost:3000/api/posts", {
-    cache: "no-store",
-  });
-  const posts = await response.json();
+  const response = await fetch("http://localhost:3000/api/posts");
+  const body: { posts: string[] } = await response.json();
 
   return (
-    <>
-      <h1>Posts</h1>
-      <p>{JSON.stringify(posts)}</p>
-    </>
+    <div className="flex flex-col gap-10 h-screen items-center">
+      <ul>
+        {body.posts.map((post, index) => (
+          <li key={index}>{post}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
